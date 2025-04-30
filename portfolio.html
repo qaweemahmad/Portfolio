@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap" rel="stylesheet">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Apply full-page background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('images/modern-futuristic-sci-fi-background_35913-2150.jpg');
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: #121212c7;
+            background-blend-mode: darken;
+            color: white;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            /* background: rgba(0, 0, 0, 0.6); */
+
+            padding: 15px 50px;
+        }
+
+        .navbar-nav {
+            gap: 30px;
+        }
+
+        .nav-item .nav-link {
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-item .nav-link:hover {
+            color: #ffcc00;
+            transform: scale(1.1);
+        }
+
+        /* Button Styling */
+        .animated-btn {
+            background: linear-gradient(45deg, #ff5733, #ffcc00);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .animated-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            /* Full viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            padding-bottom: 200px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            font-weight: 700;
+        }
+
+        .hero-content h1 span {
+            color: #ffcc00;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        .hero-form {
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 5px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .hero-form input {
+            border: none;
+            outline: none;
+            padding: 10px;
+            flex: 1;
+            border-radius: 30px;
+        }
+
+        .hero-form button {
+            background: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            color: black;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero-form button:hover {
+            background: #ff9900;
+        }
+
+        /* About Me Section */
+        .about-section {
+            background-color: #121212c7;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 60px;
+            background-blend-mode: lighten;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .about-img img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .about-content {
+            max-width: 500px;
+        }
+
+        .animated-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, #556270);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .animated-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .custom-container {
+            background-color: rgba(0, 0, 0, 0.726);
+            color: white;
+            /* min-height: 100vh; */
+            padding: 230px;
+            background-blend-mode: darken;
+
+        }
+
+        .custom-services {
+            /* background-color: black; */
+            color: white;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #1c1c1c;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 123, 255, 0.2) 10%, transparent 50%);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card:hover::before {
+            transform: translate(50%, 50%);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .btn-animated {
+            transition: all 0.3s ease-in-out;
+            margin-top: auto;
+            width: 150px;
+        }
+
+        .btn-animated:hover {
+            transform: scale(1.1);
+            background-color: #007bff;
+            color: white;
+        }
+
+        .svg-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            fill: white;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover .svg-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                min-height: 350px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* html {
+            background: #222;
+            margin: 0;
+            padding: 0;
+            padding-top: 100px;
+            padding-bottom: 300px;
+            text-align: center;
+        } */
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wrapper {
+            font-family: Arial, sans-serif;
+            background: #222;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 55px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+
+        .grid-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .page-wrapper {
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 300px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            background: linear-gradient(145deg, #1e1e1e, #292929);
+            box-shadow: 5px 5px 15px #0a0a0a, -5px -5px 15px #333;
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .map-container {
+            width: 55%;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .contact-table {
+            width: 40%;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: inset 4px 4px 10px #0a0a0a, inset -4px -4px 10px #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 10px;
+            background: #292929;
+            color: white;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            background: #333;
+            outline: none;
+        }
+
+        .map-container:hover,
+        .contact-table:hover {
+            animation: fadeIn 1s ease-in-out, slideUp 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .custom-footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .custom-footer:hover {
+            background: #222;
+        }
+
+        .custom-footer .social-links a {
+            color: #fff;
+            margin: 0 12px;
+            font-size: 22px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .custom-footer .social-links a:hover {
+            transform: scale(1.3);
+            color: #f39c12;
+        }
+
+        .custom-footer p {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark p-3">
+        <div class="container-fluid">
+            <h1 class="navbar-brand text-white fw-bolder fs-1" style=" font-family: 'Fascinate Inline', cursive;">Q A</h1>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <button class="animated-btn">Click Me</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section" id="home">
+        <div class="hero-content">
+            <p>Hello, my name is</p>
+            <h1>Qaweem <span>Ahmed</span></h1>
+            <p>I'm a Web Developer.</p>
+            <div class="hero-form">
+                <input type="email" placeholder="Enter Your Email">
+                <button>Let's Start</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Me Section (Now Separate and Below) -->
+    <div class="about-section" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="images/babar.jpg" alt="Your Picture">
+                </div>
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>I am a passionate Web Developer with expertise in HTML, CSS, JavaScript, PHP, and MySQL. I love
+                        creating professional and responsive websites with smooth animations and modern designs.</p>
+                    <a href="#" class="animated-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cards start -->
+    <div class="custom-container">
+        <div class="custom-services" id="services">
+            <div class="container py-5">
+                <h2 class="text-center  mb-5 pb-5">Our Services</h2>
+                <div class="card-container row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card p-3">
+                            <svg class="svg-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="30" stroke="white" stroke-width="4" fill="none" />
+                                <path d="M20 32h24m-12-12v24" stroke="white" stroke-width="4" stroke-linecap="round" />
+                            </svg>
+                            <div class="card-body">
+                                <h5 class="card-title">Web Development</h5>
+                                <p class="card-text">We provide professional and modern website development services.
+                                </p>
+                                <a href="#" class="btn btn-primary btn-animated">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card p-3">
+                            <svg class="svg-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="12" y="20" width="40" height="24" stroke="white" stroke-width="4"
+                                    fill="none" />
+                                <circle cx="32" cy="32" r="4" fill="white" />
+                            </svg>
+                            <div class="card-body">
+                                <h5 class="card-title">E-Commerce Solutions</h5>
+                                <p class="card-text">Build your online store with our custom e-commerce solutions.</p>
+                                <a href="#" class="btn btn-primary btn-animated">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="card p-3">
+                            <svg class="svg-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="32,12 52,52 12,52" stroke="white" stroke-width="4" fill="none" />
+                            </svg>
+                            <div class="card-body">
+                                <h5 class="card-title">SEO Optimization</h5>
+                                <p class="card-text">Enhance your website's ranking with our SEO strategies.</p>
+                                <a href="#" class="btn btn-primary btn-animated">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- images section -->
+    <div class="wrapper p-5" id="gallery">
+        <div class="title">Image Gallery</div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="images/premium_photo-1664540415069-bc45ce3e711e.jpeg" alt="Image 1">
+                <div class="overlay">Image 1</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/premium_photo-1661400600986-b7493240cae2.jpeg" alt="Image 2">
+                <div class="overlay">Image 2</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/istockphoto-1949501832-612x612.webp" alt="Image 3">
+                <div class="overlay">Image 3</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/istockphoto-1636332529-612x612.webp" alt="Image 4">
+                <div class="overlay">Image 4</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/istockphoto-1455343221-612x612.webp" alt="Image 5">
+                <div class="overlay">Image 5</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/istockphoto-1413766112-612x612.webp" alt="Image 6">
+                <div class="overlay">Image 6</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/premium_photo-1681822627106-2616801638c3.jpeg" alt="Image 7">
+                <div class="overlay">Image 7</div>
+            </div>
+            <div class="grid-item">
+                <img src="images/istockphoto-1355030282-612x612.webp" alt="Image 8">
+                <div class="overlay">Image 8</div>
+            </div>
+        </div>
+    </div>
+    <!-- email section -->
+    <div class="page-wrapper">
+        <footer class="footer" id="contact">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?..." loading="lazy"></iframe>
+            </div>
+            <div class="contact-table">
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea rows="3" placeholder="Message" required></textarea>
+                    <button type="submit" class="btn btn-primary w-100">Send</button>
+                </form>
+            </div>
+        </footer>
+    </div>
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2025 Your Company | All Rights Reserved</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
